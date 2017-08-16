@@ -10,7 +10,6 @@ $(document).ready(function(){
             $('#dropdown-menu').css('display', 'none');
         }
         dropdown_flag = !dropdown_flag;
-        console.log('ok');
     }
     $(document).bind('click', dropdownShut2);
     function dropdownShut() {
@@ -116,6 +115,7 @@ $(document).ready(function(){
             $('.nav-long').css('display','block');
             $('.nav-short').css('display','none');
             $('.main-nav-wrap').unbind();
+            $('.bg').css('display','none');
         }
     });
     //row
@@ -125,6 +125,7 @@ $(document).ready(function(){
         spaceBetween: 0,
         loop: true,
         autoplay: 3000,
+        autoplayDisableOnInteraction: false,
         pagination: '.rowBlock-pagination1',
         paginationClickable :true
     });
@@ -148,5 +149,42 @@ $(document).ready(function(){
         prevButton: '.rowBlock-prev',
         spaceBetween: 0,
         buttonDisabledClass:'mine'
+    });
+    //login or sign up
+    $('.user-form-nav-list').click(function(){
+        var i=$(this).index();
+        $(this).removeClass('thisForm').addClass('thisForm').siblings().removeClass('thisForm');
+        if(i==0){
+            $('.user-text-login').show();
+            $('.user-text-signUp').hide();
+            $('.user-form-login').show();
+            $('.user-form-signUp').hide();
+        }else{
+            $('.user-text-login').hide();
+            $('.user-text-signUp').show();
+            $('.user-form-login').hide();
+            $('.user-form-signUp').show();
+        }
+    });
+    //login
+    $('.userShow1').click(function(){
+        $('.user').show();
+        $('.user-form-nav-list').eq(0).removeClass('thisForm').addClass('thisForm').siblings().removeClass('thisForm');
+        $('.user-text-login').show();
+        $('.user-text-signUp').hide();
+        $('.user-form-login').show();
+        $('.user-form-signUp').hide();
+    });
+    //sign up
+    $('.userShow2').click(function(){
+        $('.user').show();
+        $('.user-form-nav-list').eq(1).removeClass('thisForm').addClass('thisForm').siblings().removeClass('thisForm');
+        $('.user-text-login').hide();
+        $('.user-text-signUp').show();
+        $('.user-form-login').hide();
+        $('.user-form-signUp').show();
+    });
+    $('#shutForm').click(function(){
+        $('.user').hide();
     });
 });
